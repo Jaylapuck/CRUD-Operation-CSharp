@@ -28,10 +28,11 @@ namespace FinalProject
 
             List<User> userList = new List<User>();
 
-            userList.Add(new User() { FirstName = "Christine", LastName = "Jones", Age = 35, Email = "chrstine@gmail.com", PhoneNumber = "450-443-8694" });
-            userList.Add(new User() { FirstName = "Jim", LastName = "Jones", Age = 87, Email = "jimjones@gmail.com", PhoneNumber = "450-246-3575" });
-            userList.Add(new User() { FirstName = "Sarah", LastName = "Brown", Age = 16, Email = "sarahbrown@gmail.com", PhoneNumber = "514-235-3232" });
-            userList.Add(new User() { FirstName = "Jean", LastName = "Charles", Age = 42, Email = "jean@gmail.com", PhoneNumber = "450-443-8694" });
+            userList.Add(new User() { FirstName = "Naruto", LastName = "Uzumaki", Age = 16, Email = "hokagelife@gmail.com", PhoneNumber = "450-443-8694" });
+            userList.Add(new User() { FirstName = "Garona", LastName = "Lothar", Age = 87, Email = "justWow@gmail.com", PhoneNumber = "450-246-3575" });
+            userList.Add(new User() { FirstName = "Getchi", LastName = "Haiper", Age = 16, Email = "lockerRoom@gmail.com", PhoneNumber = "514-235-3232" });
+            userList.Add(new User() { FirstName = "Crai", LastName = "Gasem", Age = 42, Email = "craiG@gmail.com", PhoneNumber = "450-443-3992" });
+            userList.Add(new User() { FirstName = "Keque", LastName = "Duble-Yu", Age = 68, Email = "kw@gmail.com", PhoneNumber = "450-420-8694" });
 
             lvDataBinding.ItemsSource = userList;
         }

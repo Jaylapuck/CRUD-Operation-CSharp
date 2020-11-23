@@ -5,11 +5,11 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="Auto" Width="Auto">
     <Grid>
         <DockPanel>
-            <StackPanel DockPanel.Dock="Right" Margin="5" Width="120">
-                <TextBlock Text="List of Selection's" FontSize="14" FontWeight="Bold" />
+            <StackPanel DockPanel.Dock="Right" Margin="5" Width="Auto">
+                <TextBlock Text="List of Selection's" FontSize="14" FontWeight="Bold" TextDecorations="underline" />
                 <Button Content="Add" Click="Add" Margin="5" />
                 <Button Content="Edit" Click="Edit" Margin="5" />
                 <Button Content="View" Click="View" Margin="5" />
