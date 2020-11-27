@@ -39,7 +39,17 @@ namespace FinalProject
 
         private void Add(object sender, RoutedEventArgs e)
         {
-        }
+            MessageBoxResult areYouSure = MessageBox.Show("Warning!", "Are you sure you wish to Add this record?", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+            switch (areYouSure)
+            {
+                case MessageBoxResult.Yes:
+                    MessageBox.Show("Record Added.");
+                    break;
+                case MessageBoxResult.No:
+                    MessageBox.Show("No Record Added.");
+                    break;
+            }
+            }
 
         private void Lookup(object sender, SelectionChangedEventArgs e)
         {
@@ -55,6 +65,18 @@ namespace FinalProject
 
         private void Delete(object sender, RoutedEventArgs e)
         {
+
+            MessageBoxResult areYouSure = MessageBox.Show("Warning!", "Are you sure you wish to delete this record?", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+            switch (areYouSure)
+            {
+                case MessageBoxResult.Yes:
+                    MessageBox.Show("Record Deleted.");
+                        break;
+                case MessageBoxResult.No:
+                    MessageBox.Show("No Record Deleted.");
+                    break;
+
+            }
         }
     }
 
