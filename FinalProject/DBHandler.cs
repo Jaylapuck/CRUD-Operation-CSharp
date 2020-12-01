@@ -34,11 +34,18 @@ namespace FinalProject
 
                         person.FirstName = reader["FirstName"].ToString();
                         person.LastName = reader["LastName"].ToString();
-                        person.City = reader["City"].ToString();
+                        person.Email = reader["Email"].ToString();
 
                         if (Int32.TryParse(reader["Age"].ToString(), out int age))
                         {
                             person.Age = age;
+                        }
+
+                        person.Email = reader["Email"].ToString();
+
+                        if (Int32.TryParse(reader["PhoneNumber"].ToString(), out int phoneNumber))
+                        {
+                            person.PhoneNumber = phoneNumber;
                         }
 
                         personList.Add(person);
