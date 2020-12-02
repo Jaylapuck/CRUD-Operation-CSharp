@@ -28,6 +28,7 @@ namespace FinalProject
 
         private void UpdateContact(object sender, RoutedEventArgs e)
         {
+
         }
     }
 }

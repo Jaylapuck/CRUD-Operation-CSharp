@@ -10,17 +10,17 @@ namespace FinalProject
 {
     internal class DBHandler
     {
-        //private constructor
-        DBHandler() { }
+        ////private constructor
+        //DBHandler() { }
 
-        //private object instantiated with private contrsuctor
-        static readonly DBHandler instance = new DBHandler();
+        ////private object instantiated with private contrsuctor
+        //static readonly DBHandler instance = new DBHandler();
 
-        //public static property to get the object
-        public static DBHandler Instance
-        {
-            get { return instance; }
-        }
+        ////public static property to get the object
+        //public static DBHandler Instance
+        //{
+        //    get { return instance; }
+        //}
 
         private string ConnString = ConfigurationManager.ConnectionStrings["ContactConn"].ConnectionString;
 
