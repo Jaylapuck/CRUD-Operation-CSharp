@@ -55,6 +55,8 @@ namespace FinalProject
             {
                 case MessageBoxResult.Yes:
                     //find a way to get the ID and compare it to the database so we can delete it
+                    var id = (dynamic)lvDataBinding.SelectedItems[0];
+                    DBHandler.DeleteRecord(id);
                     MessageBox.Show("Record deleted");
                     break;
 

@@ -32,12 +32,5 @@ namespace FinalProject
             db.InsertingRecord(FirstName.Text, LastName.Text, AgeConverted, Email.Text, PhoneNumber.Text);
             this.Close();
         }
-
-        private void UpdatedContact(object sender, RoutedEventArgs e)
-        {
-            Int32.TryParse(Age.Text, out int AgeConverted);
-            db.InsertingRecord(FirstName.Text, LastName.Text, AgeConverted, Email.Text, PhoneNumber.Text);
-            this.Close();
-        }
     }
 }

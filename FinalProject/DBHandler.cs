@@ -119,7 +119,7 @@ namespace FinalProject
 
                 cmd.Parameters.AddWithValue("@rID", rowIndex);
 
-                SqlDataReader sqlDataReader = cm.ExecuteReader();
+                SqlDataReader sqlDataReader = cmd.ExecuteReader();
 
                 conn.Close();
             }

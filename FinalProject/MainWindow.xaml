@@ -48,7 +48,7 @@
                 </Border>
             </StackPanel>
             <Border BorderThickness="5" CornerRadius="3">
-                <ListView x:Name="lvDataBinding" HorizontalAlignment="Stretch" SelectionMode="Extended">
+                <!--<ListView x:Name="lvDataBinding" HorizontalAlignment="Stretch" SelectionMode="Extended">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Id" DisplayMemberBinding="{Binding Id}" Width="30" />
@@ -65,7 +65,17 @@
                             <GridViewColumn Header="Phone Number" DisplayMemberBinding="{Binding PhoneNumber}"  Width="120" />
                         </GridView>
                     </ListView.View>
-                </ListView>
+                </ListView>-->
+                <DataGrid x:Name="lvDataBinding">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="25" />
+                        <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="125" />
+                        <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}" Width="125" />
+                        <DataGridTextColumn Header="Age" Binding="{Binding Age}" Width="125" />
+                        <DataGridTextColumn Header="Email" Binding="{Binding Email}" Width="125" />
+                        <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" Width="140" />
+                    </DataGrid.Columns>
+                </DataGrid>
             </Border>
         </DockPanel>
     </Grid>
