@@ -20,7 +20,8 @@ namespace FinalProject
     /// </summary>
     public partial class MainWindow : Window
     {
-        private DBHandler db = new DBHandler();
+        private DBHandler DBHandler = new DBHandler();
+
         private List<Person> userList = new List<Person>();
 
         public MainWindow()
@@ -30,30 +31,20 @@ namespace FinalProject
 
         private void Add(object sender, RoutedEventArgs e)
         {
-            MessageBoxResult areYouSure = MessageBox.Show("Warning!", "Are you sure you wish to Add this record?", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
-            switch (areYouSure)
-            {
-                case MessageBoxResult.Yes:
-                    MessageBox.Show("Record Added.");
-                    break;
-
-                case MessageBoxResult.No:
-                    MessageBox.Show("No Record Added.");
-                    break;
-            }
-        }
-
-        private void Lookup(object sender, SelectionChangedEventArgs e)
-        {
+            AddWindow addWindow = new AddWindow();
+            addWindow.Show();
         }
 
         private void Edit(object sender, RoutedEventArgs e)
         {
+            //find a way to get the ID so that when the window pop ups, the values are already there.
+            UpdateWindow update = new UpdateWindow();
+            update.Show();
         }
 
         private void View(object sender, RoutedEventArgs e)
         {
-            List<Person> listUsers = db.ReadAllPersons();
+            List<Person> listUsers = DBHandler.ReadAllPersons();
             lvDataBinding.ItemsSource = listUsers;
         }
 
@@ -63,11 +54,12 @@ namespace FinalProject
             switch (areYouSure)
             {
                 case MessageBoxResult.Yes:
-                    MessageBox.Show("Record Deleted.");
+                    //find a way to get the ID and compare it to the database so we can delete it
+                    MessageBox.Show("Record deleted");
                     break;
 
                 case MessageBoxResult.No:
-                    MessageBox.Show("No Record Deleted.");
+                    MessageBox.Show("No Record Added.");
                     break;
             }
         }
