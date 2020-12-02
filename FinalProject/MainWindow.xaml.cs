@@ -40,8 +40,17 @@ namespace FinalProject
         private void Edit(object sender, RoutedEventArgs e)
         {
             //find a way to get the ID so that when the window pop ups, the values are already there.
-            UpdateWindow update = new UpdateWindow();
-            update.Show();
+            if (lvDataBinding.SelectedItem != null)
+            {
+                Person selectedPerson = (Person)lvDataBinding.SelectedItem;
+                
+                UpdateWindow update = new UpdateWindow(selectedPerson.FirstName, selectedPerson.LastName, selectedPerson.Age, selectedPerson.Email, selectedPerson.PhoneNumber, selectedPerson.Id);
+                update.Show();
+                
+            }
+            else
+                MessageBox.Show("No contact selected.","ERROR", MessageBoxButton.OK);
+            
         }
 
         private void View(object sender, RoutedEventArgs e)
@@ -52,6 +61,9 @@ namespace FinalProject
 
         private void Delete(object sender, RoutedEventArgs e)
         {
+
+
+
             MessageBoxResult areYouSure = MessageBox.Show("Warning!", "Are you sure you wish to delete this record?", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
             switch (areYouSure)
             {

@@ -5,17 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-        Title="UpdateWindow" Height="315" Width="300">
+        Title="UpdateWindow" Height="330" Width="300">
     <Grid>
         <GroupBox Background="White" Margin="10" Padding="10">
             <GroupBox.Header>
                 <StackPanel  Orientation="Horizontal">
                     <Image Source="C:\Users\Jeremy\source\repos\FinalProject\Images\Update file.png" Width="20" Height="18" />
-                    <TextBlock FontWeight="Bold">Add a User
+                    <TextBlock FontWeight="Bold">
+                        Edit a contact
                     </TextBlock>
                 </StackPanel>
             </GroupBox.Header>
             <StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock>ID:</TextBlock>
+                    <TextBox x:Name="Id" IsReadOnly="True"/>
+                </StackPanel>
                 <TextBlock>First name:</TextBlock>
                 <TextBox x:Name="FirstName" />
                 <TextBlock>Last name:</TextBlock>
@@ -24,9 +29,9 @@
                 <TextBox x:Name="Age" />
                 <TextBlock>Age:</TextBlock>
                 <TextBox x:Name="Email" />
-                <TextBlock>Phone-Number:</TextBlock>
+                <TextBlock>Phone Number:</TextBlock>
                 <TextBox x:Name="PhoneNumber" />
-                <Button Margin="0,20" Content="Add User" FontSize="13" FontWeight="Bold" Click="UpdateContact" />
+                <Button Margin="0,20" Content="Edit Contact" FontSize="13" FontWeight="Bold" Click="UpdateContact" />
             </StackPanel>
         </GroupBox>
     </Grid>

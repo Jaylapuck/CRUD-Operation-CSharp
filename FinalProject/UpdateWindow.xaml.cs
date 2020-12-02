@@ -20,15 +20,32 @@ namespace FinalProject
     public partial class UpdateWindow : Window
     {
         private DBHandler DBHandler = new DBHandler();
+        
 
-        public UpdateWindow()
+        public UpdateWindow(string firstName, string lastName, int age, string email, string phoneNumber, int id)
         {
             InitializeComponent();
+            FirstName.Text = firstName;
+            LastName.Text = lastName;
+            Age.Text = age.ToString();
+            Email.Text = email;
+            PhoneNumber.Text = phoneNumber;
+            Id.Text = id.ToString();
         }
 
         private void UpdateContact(object sender, RoutedEventArgs e)
         {
+            string firstName = FirstName.Text;
+            string lastName = LastName.Text;
+            Int32.TryParse(Age.Text, out int age);
+            string email = Email.Text;
+            string phoneNumber = PhoneNumber.Text;
+            Int32.TryParse(Id.Text, out int id);
 
+            DBHandler.UpdateRecord(firstName, lastName, age, email, phoneNumber, id);
+
+            this.Close();
+            
         }
     }
 }

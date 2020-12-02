@@ -65,6 +65,8 @@ namespace FinalProject
             return personList;
         }
 
+       
+
         public void InsertingRecord(string FirstName, string LastName, int Age, string Email, string Phone)
         {
             SqlConnection conn = new SqlConnection(ConnString);
@@ -92,32 +94,44 @@ namespace FinalProject
             }
         }
 
-        public void UpdateRecord(string FirstName, string LastName, int Age, string Email, string Phone)
+        public void UpdateRecord(string FirstName, string LastName, int Age, string Email, string Phone, int ID)
         {
             using (SqlConnection conn = new SqlConnection(ConnString))
             {
-                SqlCommand cmd = new SqlCommand("update Person set FirstName = @FN, LastName = @LN, Age = @A, @E = Email, Phone_Number = @PN where Id = @rID", conn);
+                conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("update Person set FirstName = @FN, LastName = @LN, Age = @A, @E = Email, PhoneNumber = @PN where Id = @rID", conn, transaction);
+
+                
 
                 cmd.Parameters.AddWithValue("@FN", FirstName);
                 cmd.Parameters.AddWithValue("@LN", LastName);
                 cmd.Parameters.AddWithValue("@A", Age);
                 cmd.Parameters.AddWithValue("@E", Email);
                 cmd.Parameters.AddWithValue("@PN", Phone);
+                cmd.Parameters.AddWithValue("@rID", ID);
 
-                try
-                {
-                    conn.Open();
-                    var rowsAffected = cmd.ExecuteNonQuery();
-                    Console.WriteLine("Record Updated Succesfully");
-                }
-                catch (SqlException e)
-                {
-                    Console.WriteLine("Error Generated. Details: " + e.ToString());
-                }
-                finally
-                {
-                    conn.Close();
-                }
+                
+                cmd.ExecuteNonQuery();
+                transaction.Commit();
+                
+                    
+               
+
+                //try
+                //{
+                //    conn.Open();
+                //    var rowsAffected = cmd.ExecuteNonQuery();
+                //    Console.WriteLine("Record Updated Succesfully");
+                //}
+                //catch (SqlException e)
+                //{
+                //    Console.WriteLine("Error Generated. Details: " + e.ToString());
+                //}
+                //finally
+                //{
+                //    conn.Close();
+                //}
             }
         }
 
