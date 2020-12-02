@@ -8,45 +8,42 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    class DBHandler
+    internal class DBHandler
     {
-        string ConnStr = ConfigurationManager.ConnectionStrings["ContactConn"].ConnectionString;
+        private string ConnString = ConfigurationManager.ConnectionStrings["ContactConn"].ConnectionString;
 
         public List<Person> ReadAllPersons()
         {
             List<Person> personList = new List<Person>();
 
-            using (SqlConnection conn = new SqlConnection(ConnStr))
+            using (SqlConnection conn = new SqlConnection(ConnString))
             {
                 conn.Open();
                 SqlCommand cm = new SqlCommand("select * from Person", conn);
 
-                using (SqlDataReader reader = cm.ExecuteReader())
+                using (SqlDataReader sqlDataReader = cm.ExecuteReader())
                 {
-                    while (reader.Read())
+                    while (sqlDataReader.Read())
                     {
                         Person person = new Person();
 
-                        if (Int32.TryParse(reader["Id"].ToString(), out int id))
+                        if (Int32.TryParse(sqlDataReader["Id"].ToString(), out int id))
                         {
                             person.Id = id;
                         }
 
-                        person.FirstName = reader["FirstName"].ToString();
-                        person.LastName = reader["LastName"].ToString();
-                        person.Email = reader["Email"].ToString();
+                        person.FirstName = sqlDataReader["FirstName"].ToString();
+                        person.LastName = sqlDataReader["LastName"].ToString();
+                        person.Email = sqlDataReader["Email"].ToString();
 
-                        if (Int32.TryParse(reader["Age"].ToString(), out int age))
+                        if (Int32.TryParse(sqlDataReader["Age"].ToString(), out int age))
                         {
                             person.Age = age;
                         }
 
-                        person.Email = reader["Email"].ToString();
+                        person.Email = sqlDataReader["Email"].ToString();
 
-                        if (Int32.TryParse(reader["PhoneNumber"].ToString(), out int phoneNumber))
-                        {
-                            person.PhoneNumber = phoneNumber;
-                        }
+                        person.PhoneNumber = sqlDataReader["Phone_Number"].ToString();
 
                         personList.Add(person);
                     }
