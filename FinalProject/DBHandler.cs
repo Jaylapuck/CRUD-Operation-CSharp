@@ -43,7 +43,7 @@ namespace FinalProject
 
                         person.Email = sqlDataReader["Email"].ToString();
 
-                        person.PhoneNumber = sqlDataReader["Phone_Number"].ToString();
+                        person.PhoneNumber = sqlDataReader["PhoneNumber"].ToString();
 
                         personList.Add(person);
                     }

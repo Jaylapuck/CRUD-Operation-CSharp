@@ -27,6 +27,8 @@ namespace FinalProject
         public MainWindow()
         {
             InitializeComponent();
+
+            lvDataBinding.ItemsSource = DBHandler.ReadAllPersons();
         }
 
         private void Add(object sender, RoutedEventArgs e)
