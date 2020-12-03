@@ -19,7 +19,7 @@ namespace FinalProject
     /// </summary>
     public partial class AddWindow : Window
     {
-        private DBHandler db = new DBHandler();
+        private DBHandler DBHandler = DBHandler.Instance;
 
         public AddWindow()
         {
@@ -29,7 +29,7 @@ namespace FinalProject
         private void AddContact(object sender, RoutedEventArgs e)
         {
             Int32.TryParse(Age.Text, out int AgeConverted);
-            db.InsertingRecord(FirstName.Text, LastName.Text, AgeConverted, Email.Text, PhoneNumber.Text);
+            DBHandler.InsertingRecord(FirstName.Text, LastName.Text, AgeConverted, Email.Text, PhoneNumber.Text);
             this.Close();
         }
     }

@@ -19,8 +19,7 @@ namespace FinalProject
     /// </summary>
     public partial class UpdateWindow : Window
     {
-        private DBHandler DBHandler = new DBHandler();
-        
+        private DBHandler DBHandler = DBHandler.Instance;
 
         public UpdateWindow(string firstName, string lastName, int age, string email, string phoneNumber, int id)
         {
@@ -45,7 +44,6 @@ namespace FinalProject
             DBHandler.UpdateRecord(firstName, lastName, age, email, phoneNumber, id);
 
             this.Close();
-            
         }
     }
 }

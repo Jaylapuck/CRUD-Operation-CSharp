@@ -10,17 +10,18 @@ namespace FinalProject
 {
     internal class DBHandler
     {
-        ////private constructor
-        //DBHandler() { }
+        //private constructor
+        private DBHandler()
+        { }
 
-        ////private object instantiated with private contrsuctor
-        //static readonly DBHandler instance = new DBHandler();
+        //private object instantiated with private contrsuctor
+        private static readonly DBHandler instance = new DBHandler();
 
-        ////public static property to get the object
-        //public static DBHandler Instance
-        //{
-        //    get { return instance; }
-        //}
+        //public static property to get the object
+        public static DBHandler Instance
+        {
+            get { return instance; }
+        }
 
         private string ConnString = ConfigurationManager.ConnectionStrings["ContactConn"].ConnectionString;
 
@@ -55,7 +56,7 @@ namespace FinalProject
 
                         person.Email = sqlDataReader["Email"].ToString();
 
-                        person.PhoneNumber = sqlDataReader["PhoneNumber"].ToString();
+                        person.PhoneNumber = sqlDataReader["Phone_Number"].ToString();
 
                         personList.Add(person);
                     }
@@ -66,15 +67,13 @@ namespace FinalProject
             return personList;
         }
 
-       
-
         public void InsertingRecord(string FirstName, string LastName, int Age, string Email, string Phone)
         {
-            using(SqlConnection conn = new SqlConnection(ConnString))
+            using (SqlConnection conn = new SqlConnection(ConnString))
             {
                 conn.Open();
                 SqlTransaction transaction = conn.BeginTransaction();
-                string query = "insert into Person (FirstName, LastName, Age, Email, PhoneNumber) values(@FN,@LN,@A,@E,@PN)";
+                string query = "insert into Person (FirstName, LastName, Age, Email, Phone_Number) values(@FN,@LN,@A,@E,@PN)";
                 SqlCommand cmd = new SqlCommand(query, conn, transaction);
 
                 cmd.Parameters.AddWithValue("@FN", FirstName);
@@ -86,7 +85,6 @@ namespace FinalProject
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
             }
-            
 
             //try
             //{
@@ -110,9 +108,7 @@ namespace FinalProject
             {
                 conn.Open();
                 SqlTransaction transaction = conn.BeginTransaction();
-                SqlCommand cmd = new SqlCommand("update Person set FirstName = @FN, LastName = @LN, Age = @A, @E = Email, PhoneNumber = @PN where Id = @rID", conn, transaction);
-
-                
+                SqlCommand cmd = new SqlCommand("update Person set FirstName = @FN, LastName = @LN, Age = @A, @E = Email, Phone_Number = @PN where Id = @rID", conn, transaction);
 
                 cmd.Parameters.AddWithValue("@FN", FirstName);
                 cmd.Parameters.AddWithValue("@LN", LastName);
@@ -121,12 +117,8 @@ namespace FinalProject
                 cmd.Parameters.AddWithValue("@PN", Phone);
                 cmd.Parameters.AddWithValue("@rID", ID);
 
-                
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
-                
-                    
-               
 
                 //try
                 //{
@@ -154,8 +146,6 @@ namespace FinalProject
                 SqlCommand cmd = new SqlCommand("delete from Person where Id = @rID", conn, transaction);
 
                 cmd.Parameters.AddWithValue("@rID", id);
-
-                SqlDataReader sqlDataReader = cmd.ExecuteReader();
 
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
