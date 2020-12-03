@@ -55,29 +55,40 @@ namespace FinalProject
 
         private void View(object sender, RoutedEventArgs e)
         {
-            List<Person> listUsers = DBHandler.ReadAllPersons();
-            lvDataBinding.ItemsSource = listUsers;
+
+            if (lvDataBinding.SelectedItem != null)
+            {
+                Person selectedPerson = (Person)lvDataBinding.SelectedItem;
+
+                DetailsWindow update = new DetailsWindow(selectedPerson.FirstName, selectedPerson.LastName, selectedPerson.Age, selectedPerson.Email, selectedPerson.PhoneNumber);
+                update.ShowDialog();
+
+            }
+            else
+                MessageBox.Show("No contact selected.", "ERROR", MessageBoxButton.OK);
         }
 
         private void Delete(object sender, RoutedEventArgs e)
         {
 
+            Person person = (Person)lvDataBinding.SelectedItem;
 
+            DBHandler.DeleteRecord(person.Id);
 
-            MessageBoxResult areYouSure = MessageBox.Show("Warning!", "Are you sure you wish to delete this record?", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
-            switch (areYouSure)
-            {
-                case MessageBoxResult.Yes:
-                    //find a way to get the ID and compare it to the database so we can delete it
-                    var id = (dynamic)lvDataBinding.SelectedItems[0];
-                    DBHandler.DeleteRecord(id);
-                    MessageBox.Show("Record deleted");
-                    break;
+            //MessageBoxResult areYouSure = MessageBox.Show("Warning!", "Are you sure you wish to delete this record?", MessageBoxButton.YesNo, MessageBoxImage.Warning, MessageBoxResult.No);
+            //switch (areYouSure)
+            //{
+            //    case MessageBoxResult.Yes:
+            //        //find a way to get the ID and compare it to the database so we can delete it
+            //        var id = (dynamic)lvDataBinding.SelectedItems[0];
+            //        DBHandler.DeleteRecord(id);
+            //        MessageBox.Show("Record deleted");
+            //        break;
 
-                case MessageBoxResult.No:
-                    MessageBox.Show("No Record Added.");
-                    break;
-            }
+            //    case MessageBoxResult.No:
+            //        MessageBox.Show("No Record Added.");
+            //        break;
+            //}
         }
     }
 }

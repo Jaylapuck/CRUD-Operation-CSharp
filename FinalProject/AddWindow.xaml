@@ -25,7 +25,7 @@
                 <TextBox x:Name="Age" />
                 <TextBlock>Email:</TextBlock>
                 <TextBox x:Name="Email" />
-                <TextBlock>Phone-Number:</TextBlock>
+                <TextBlock>Phone Number:</TextBlock>
                 <TextBox x:Name="PhoneNumber" />
                 <Button Margin="0,20" Content="Add User" FontSize="13" FontWeight="Bold" Click="AddContact" />
             </StackPanel>

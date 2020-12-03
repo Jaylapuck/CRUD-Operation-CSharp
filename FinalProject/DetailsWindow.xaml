@@ -1,26 +1,21 @@
-﻿<Window x:Class="FinalProject.UpdateWindow"
+﻿<Window x:Class="FinalProject.DetailsWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-        Title="UpdateWindow" Height="330" Width="300">
+        Title="DetailsWindow" Height="315" Width="300">
     <Grid>
         <GroupBox Background="White" Margin="10" Padding="10">
             <GroupBox.Header>
                 <StackPanel  Orientation="Horizontal">
-                    <Image Source="C:\Users\Jeremy\source\repos\FinalProject\Images\Update file.png" Width="20" Height="18" />
-                    <TextBlock FontWeight="Bold">
-                        Edit a contact
+                    <Image Source="C:\Users\Jeremy\source\repos\FinalProject\Images\UserAdd.png" Width="20" Height="18" />
+                    <TextBlock FontWeight="Bold">Contact Details
                     </TextBlock>
                 </StackPanel>
             </GroupBox.Header>
             <StackPanel>
-                <StackPanel Orientation="Horizontal">
-                    <TextBlock>ID:</TextBlock>
-                    <TextBox x:Name="Id" IsReadOnly="True"/>
-                </StackPanel>
                 <TextBlock>First name:</TextBlock>
                 <TextBox x:Name="FirstName" />
                 <TextBlock>Last name:</TextBlock>
@@ -31,7 +26,7 @@
                 <TextBox x:Name="Email" />
                 <TextBlock>Phone Number:</TextBlock>
                 <TextBox x:Name="PhoneNumber" />
-                <Button Margin="0,20" Content="Edit Contact" FontSize="13" FontWeight="Bold" Click="UpdateContact" />
+                
             </StackPanel>
         </GroupBox>
     </Grid>

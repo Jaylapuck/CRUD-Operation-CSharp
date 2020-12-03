@@ -59,6 +59,7 @@ namespace FinalProject
 
                         personList.Add(person);
                     }
+                    sqlDataReader.Close();
                 }
             }
 
@@ -144,19 +145,20 @@ namespace FinalProject
             }
         }
 
-        public void DeleteRecord(int rowIndex)
+        public void DeleteRecord(int id)
         {
             using (SqlConnection conn = new SqlConnection(ConnString))
             {
                 conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("delete from Person where Id = @rID", conn, transaction);
 
-                SqlCommand cmd = new SqlCommand("delete from Person where Id = @rID", conn);
-
-                cmd.Parameters.AddWithValue("@rID", rowIndex);
+                cmd.Parameters.AddWithValue("@rID", id);
 
                 SqlDataReader sqlDataReader = cmd.ExecuteReader();
 
-                conn.Close();
+                cmd.ExecuteNonQuery();
+                transaction.Commit();
             }
         }
     }
