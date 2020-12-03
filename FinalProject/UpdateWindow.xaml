@@ -6,32 +6,31 @@
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
         Title="UpdateWindow" Height="330" Width="300">
-    <Grid>
-        <GroupBox Background="White" Margin="10" Padding="10">
+    <Grid Background="Black">
+        <GroupBox Background="Black" Margin="10" Padding="10">
             <GroupBox.Header>
                 <StackPanel  Orientation="Horizontal">
-                    <Image Source="C:\Users\Jeremy\source\repos\FinalProject\Images\Update file.png" Width="20" Height="18" />
-                    <TextBlock FontWeight="Bold">
+                    <TextBlock FontWeight="Bold" Foreground="Gold">
                         Edit a contact
                     </TextBlock>
                 </StackPanel>
             </GroupBox.Header>
             <StackPanel>
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock>ID:</TextBlock>
-                    <TextBox x:Name="Id" IsReadOnly="True"/>
+                    <TextBlock FontWeight="Bold" Foreground="Gold">ID:</TextBlock>
+                    <TextBox x:Name="Id" IsReadOnly="True" FontStretch="Condensed"/>
                 </StackPanel>
-                <TextBlock>First name:</TextBlock>
-                <TextBox x:Name="FirstName" />
-                <TextBlock>Last name:</TextBlock>
+                <TextBlock FontWeight="Bold" Foreground="Gold">First name:</TextBlock>
+                <TextBox x:Name="FirstName"/>
+                <TextBlock FontWeight="Bold" Foreground="Gold">Last name:</TextBlock>
                 <TextBox x:Name="LastName" />
-                <TextBlock>Age:</TextBlock>
+                <TextBlock FontWeight="Bold" Foreground="Gold">Age:</TextBlock>
                 <TextBox x:Name="Age" />
-                <TextBlock>Email:</TextBlock>
+                <TextBlock FontWeight="Bold" Foreground="Gold">Email:</TextBlock>
                 <TextBox x:Name="Email" />
-                <TextBlock>Phone Number:</TextBlock>
+                <TextBlock FontWeight="Bold" Foreground="Gold">Phone Number:</TextBlock>
                 <TextBox x:Name="PhoneNumber" />
-                <Button Margin="0,20" Content="Edit Contact" FontSize="13" FontWeight="Bold" Click="UpdateContact" />
+                <Button Margin="0,20" Content="Edit Contact" Background="Gold" FontSize="13" FontWeight="Bold" Click="UpdateContact" />
             </StackPanel>
         </GroupBox>
     </Grid>

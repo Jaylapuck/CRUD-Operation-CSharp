@@ -6,25 +6,25 @@
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
         Title="DetailsWindow" Height="315" Width="300">
-    <Grid>
-        <GroupBox Background="White" Margin="10" Padding="10">
+    <Grid Background="Black">
+        <GroupBox Background="Black" Margin="10" Padding="10">
             <GroupBox.Header>
                 <StackPanel  Orientation="Horizontal">
                     <Image Source="C:\Users\Jeremy\source\repos\FinalProject\Images\UserAdd.png" Width="20" Height="18" />
-                    <TextBlock FontWeight="Bold">Contact Details
+                    <TextBlock FontWeight="Bold" Foreground="Gold">Contact Details
                     </TextBlock>
                 </StackPanel>
             </GroupBox.Header>
             <StackPanel>
-                <TextBlock>First name:</TextBlock>
-                <TextBox x:Name="FirstName" />
-                <TextBlock>Last name:</TextBlock>
+                <TextBlock FontWeight="Bold" Foreground="Gold">First name:</TextBlock>
+                <TextBox x:Name="FirstName"  />
+                <TextBlock FontWeight="Bold" Foreground="Gold">Last name:</TextBlock>
                 <TextBox x:Name="LastName" />
-                <TextBlock>Age:</TextBlock>
+                <TextBlock FontWeight="Bold" Foreground="Gold">Age:</TextBlock>
                 <TextBox x:Name="Age" />
-                <TextBlock>Email:</TextBlock>
+                <TextBlock FontWeight="Bold" Foreground="Gold">Email:</TextBlock>
                 <TextBox x:Name="Email" />
-                <TextBlock>Phone Number:</TextBlock>
+                <TextBlock FontWeight="Bold" Foreground="Gold">Phone Number:</TextBlock>
                 <TextBox x:Name="PhoneNumber" />
                 
             </StackPanel>
