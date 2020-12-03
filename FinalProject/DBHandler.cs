@@ -69,29 +69,38 @@ namespace FinalProject
 
         public void InsertingRecord(string FirstName, string LastName, int Age, string Email, string Phone)
         {
-            SqlConnection conn = new SqlConnection(ConnString);
-            string query = "insert into Person (FirstName, LastName, Age, Email, Phone_Number) values(@FN,@LN,@A,@E,@PN)";
-            SqlCommand cmd = new SqlCommand(query, conn);
-            cmd.Parameters.AddWithValue("@FN", FirstName);
-            cmd.Parameters.AddWithValue("@LN", LastName);
-            cmd.Parameters.AddWithValue("@A", Age);
-            cmd.Parameters.AddWithValue("@E", Email);
-            cmd.Parameters.AddWithValue("@PN", Phone);
-
-            try
+            using(SqlConnection conn = new SqlConnection(ConnString))
             {
                 conn.Open();
-                var rowsAffected = cmd.ExecuteNonQuery();
-                Console.WriteLine("Records Inserted Succesfully");
+                SqlTransaction transaction = conn.BeginTransaction();
+                string query = "insert into Person (FirstName, LastName, Age, Email, PhoneNumber) values(@FN,@LN,@A,@E,@PN)";
+                SqlCommand cmd = new SqlCommand(query, conn, transaction);
+
+                cmd.Parameters.AddWithValue("@FN", FirstName);
+                cmd.Parameters.AddWithValue("@LN", LastName);
+                cmd.Parameters.AddWithValue("@A", Age);
+                cmd.Parameters.AddWithValue("@E", Email);
+                cmd.Parameters.AddWithValue("@PN", Phone);
+
+                cmd.ExecuteNonQuery();
+                transaction.Commit();
             }
-            catch (SqlException e)
-            {
-                Console.WriteLine("Error Generated. Details: " + e.ToString());
-            }
-            finally
-            {
-                conn.Close();
-            }
+            
+
+            //try
+            //{
+            //    conn.Open();
+            //    var rowsAffected = cmd.ExecuteNonQuery();
+            //    Console.WriteLine("Records Inserted Succesfully");
+            //}
+            //catch (SqlException e)
+            //{
+            //    Console.WriteLine("Error Generated. Details: " + e.ToString());
+            //}
+            //finally
+            //{
+            //    conn.Close();
+            //}
         }
 
         public void UpdateRecord(string FirstName, string LastName, int Age, string Email, string Phone, int ID)

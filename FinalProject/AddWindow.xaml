@@ -21,9 +21,9 @@
                 <TextBox x:Name="FirstName" />
                 <TextBlock>Last name:</TextBlock>
                 <TextBox x:Name="LastName" />
-                <TextBlock>Email:</TextBlock>
-                <TextBox x:Name="Age" />
                 <TextBlock>Age:</TextBlock>
+                <TextBox x:Name="Age" />
+                <TextBlock>Email:</TextBlock>
                 <TextBox x:Name="Email" />
                 <TextBlock>Phone-Number:</TextBlock>
                 <TextBox x:Name="PhoneNumber" />

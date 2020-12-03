@@ -34,7 +34,7 @@ namespace FinalProject
         private void Add(object sender, RoutedEventArgs e)
         {
             AddWindow addWindow = new AddWindow();
-            addWindow.Show();
+            addWindow.ShowDialog();
         }
 
         private void Edit(object sender, RoutedEventArgs e)
@@ -45,7 +45,7 @@ namespace FinalProject
                 Person selectedPerson = (Person)lvDataBinding.SelectedItem;
                 
                 UpdateWindow update = new UpdateWindow(selectedPerson.FirstName, selectedPerson.LastName, selectedPerson.Age, selectedPerson.Email, selectedPerson.PhoneNumber, selectedPerson.Id);
-                update.Show();
+                update.ShowDialog();
                 
             }
             else
