@@ -96,18 +96,50 @@ namespace FinalProject
 
         private void Import(object sender, RoutedEventArgs e)
         {
+            string[] contactFile = {""};
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
+            openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
             if (openFileDialog.ShowDialog() == true)
-                lvDataBinding.ItemsSource = File.ReadAllText(openFileDialog.FileName);
+                contactFile = File.ReadAllLines(openFileDialog.FileName);
+
+            DBHandler.DeleteAllRecord();
+
+            foreach (string person in contactFile)
+            {
+                char[] separators = { ',', ' ' };
+
+                string[] fields = person.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+                Int32.TryParse(fields[2].ToString(), out int age);
+
+                DBHandler.InsertingRecord(fields[0], fields[1], age, fields[3], fields[4]);
+            }
+
+            lvDataBinding.ItemsSource = DBHandler.ReadAllPersons();
         }
 
         private void Export(object sender, RoutedEventArgs e)
         {
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "CSV file (*.csv)|*.csv";
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                List<Person> personList = DBHandler.ReadAllPersons();
+
+                string[] personArray = new string[personList.Count];
+                for(int i = 0; i <= personList.Count - 1; i++)
+                {
+                    string[] fields = {personList[i].FirstName, personList[i].LastName, personList[i].Age.ToString(), personList[i].Email, personList[i].PhoneNumber};
+                    personArray[i] = string.Join(",", fields);
+                }
+
+                File.WriteAllLines(saveFileDialog.FileName, personArray);
+            }
         }
 
         private void Exit(object sender, RoutedEventArgs e)
         {
+
         }
     }
 }

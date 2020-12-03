@@ -108,7 +108,7 @@ namespace FinalProject
             {
                 conn.Open();
                 SqlTransaction transaction = conn.BeginTransaction();
-                SqlCommand cmd = new SqlCommand("update Person set FirstName = @FN, LastName = @LN, Age = @A, @E = Email, Phone_Number = @PN where Id = @rID", conn, transaction);
+                SqlCommand cmd = new SqlCommand("update Person set FirstName = @FN, LastName = @LN, Age = @A, Email = @E, Phone_Number = @PN where Id = @rID", conn, transaction);
 
                 cmd.Parameters.AddWithValue("@FN", FirstName);
                 cmd.Parameters.AddWithValue("@LN", LastName);
@@ -146,6 +146,20 @@ namespace FinalProject
                 SqlCommand cmd = new SqlCommand("delete from Person where Id = @rID", conn, transaction);
 
                 cmd.Parameters.AddWithValue("@rID", id);
+
+                cmd.ExecuteNonQuery();
+                transaction.Commit();
+            }
+        }
+
+        public void DeleteAllRecord()
+        {
+            using (SqlConnection conn = new SqlConnection(ConnString))
+            {
+                conn.Open();
+                SqlTransaction transaction = conn.BeginTransaction();
+                SqlCommand cmd = new SqlCommand("delete from Person", conn, transaction);
+
 
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
