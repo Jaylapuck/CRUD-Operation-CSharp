@@ -71,7 +71,19 @@ namespace FinalProject
         {
             Person person = (Person)lvDataBinding.SelectedItem;
 
-            DBHandler.DeleteRecord(person.Id);
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this contact?", "Warning", MessageBoxButton.YesNo);
+
+            switch (result)
+            {
+                case MessageBoxResult.Yes:
+                    DBHandler.DeleteRecord(person.Id);
+                    MessageBox.Show("Contact has been deleted.");
+                    break;
+                case MessageBoxResult.No:
+                    MessageBox.Show("Contact has not been deleted.");
+                    break;
+            }
+
 
             lvDataBinding.ItemsSource = DBHandler.ReadAllPersons();
         }
