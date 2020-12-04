@@ -114,7 +114,7 @@ namespace FinalProject
             if (openFileDialog.ShowDialog() == true)
                 contactFile = File.ReadAllLines(openFileDialog.FileName);
 
-            MessageBoxResult result = MessageBox.Show("Do you want to the contacts in this file to replace you contact list?", "Warning", MessageBoxButton.YesNo);
+            MessageBoxResult result = MessageBox.Show("Do you want the imported file data to replace the current data?", "Warning", MessageBoxButton.YesNo);
 
             switch (result)
             {
