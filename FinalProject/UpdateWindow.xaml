@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-        Title="UpdateWindow" Height="330" Width="300">
+        Title="UpdateWindow" Height="400" Width="400">
     <Grid Background="Black">
-        <GroupBox Background="Black" BorderBrush="Gold" Foreground="Gold" FontWeight="DemiBold" Margin="10" Padding="10">
+        <GroupBox Background="Black" BorderBrush="Gold" Foreground="Gold" FontSize="15" FontWeight="DemiBold" Margin="10" Padding="10">
             <GroupBox.Header>
                 <StackPanel  Orientation="Horizontal">
                     <TextBlock FontWeight="Bold" Foreground="Gold">
@@ -30,7 +30,7 @@
                 <TextBox x:Name="Email" Background="LightGoldenrodYellow" />
                 <TextBlock>Phone Number:</TextBlock>
                 <TextBox x:Name="PhoneNumber" Background="LightGoldenrodYellow"/>
-                <Button Margin="0,20" Content="Edit Contact" Background="Gold" FontSize="13" FontWeight="Bold" Click="UpdateContact" />
+                <Button Margin="0,20" Content="Edit Contact" Background="Gold" FontSize="17" FontWeight="Bold" Click="UpdateContact" />
             </StackPanel>
         </GroupBox>
     </Grid>

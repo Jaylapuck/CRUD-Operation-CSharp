@@ -117,7 +117,6 @@ namespace FinalProject
                 transaction.Commit();
             }
         }
-
         public void DeleteAllRecord()
         {
             using (SqlConnection conn = new SqlConnection(ConnString))

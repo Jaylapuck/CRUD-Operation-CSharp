@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-        Title="DetailsWindow" Height="315" Width="300">
+        Title="DetailsWindow" Height="400" Width="400">
     <Grid Background="Black">
-        <GroupBox Background="black" BorderBrush="Gold" Foreground="Gold" FontWeight="DemiBold" Margin="10" Padding="10">
+        <GroupBox Background="black" BorderBrush="Gold" Foreground="Gold" FontSize="17" FontWeight="DemiBold" Margin="10" Padding="10">
             <GroupBox.Header>
                 <StackPanel  Orientation="Horizontal">
                     <TextBlock FontWeight="Bold" Background="Black" Foreground="Gold">Contact Details
@@ -25,7 +25,6 @@
                 <TextBox x:Name="Email" Background="LightGoldenrodYellow"/>
                 <TextBlock>Phone Number:</TextBlock>
                 <TextBox x:Name="PhoneNumber" Background="LightGoldenrodYellow"/>
-                
             </StackPanel>
         </GroupBox>
     </Grid>

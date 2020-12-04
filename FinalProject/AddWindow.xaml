@@ -5,10 +5,10 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FinalProject"
         mc:Ignorable="d"
-        Title="AddWindow" Height="315" Width="300">
+        Title="AddWindow" Height="400" Width="400">
 
     <Grid Background="Black">
-        <GroupBox Background="Black" Foreground="Gold" BorderBrush="Gold" Margin="10" Padding="10">
+        <GroupBox Background="Black" Foreground="Gold" BorderBrush="Gold" FontWeight="DemiBold" FontSize="15" Margin="10" Padding="10">
             <GroupBox.Header>
                 <StackPanel  Orientation="Horizontal">
                     <TextBlock FontWeight="Bold" Background="Black" Foreground="Gold">Add a User
@@ -26,7 +26,7 @@
                 <TextBox x:Name="Email" Background="LightGoldenrodYellow" />
                 <TextBlock>Phone Number:</TextBlock>
                 <TextBox x:Name="PhoneNumber" Background="LightGoldenrodYellow" />
-                <Button Margin="0,20" Content="Add User" Background="Black" BorderBrush="Gold" BorderThickness="3" Foreground="Gold" FontSize="13" FontWeight="DemiBold" Click="AddContact" />
+                <Button Margin="0,20" Content="Add User" Background="Black" BorderBrush="Gold" BorderThickness="3" Foreground="Gold" FontSize="17" FontWeight="DemiBold" Click="AddContact" />
             </StackPanel>
         </GroupBox>
     </Grid>
