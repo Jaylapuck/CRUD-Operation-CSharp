@@ -59,7 +59,7 @@
                 </Border>
             </StackPanel>
             <Border BorderThickness="5" CornerRadius="3">
-                <ListView x:Name="lvDataBinding" HorizontalAlignment="Stretch"
+                <ListView x:Name="lvDataBinding" HorizontalAlignment="Stretch" Background="LightGoldenrodYellow"
                           SelectionMode="Single" MouseDoubleClick="lvDataBinding_MouseDoubleClick">
                     <ListView.View>
                         <GridView>
