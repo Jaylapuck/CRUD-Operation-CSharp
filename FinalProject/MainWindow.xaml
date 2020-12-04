@@ -15,40 +15,42 @@
 
         <Style TargetType="{x:Type Button}">
             <Setter Property="FontSize" Value="16" />
-            <Setter Property="FontWeight" Value="ExtraBlack" />
+            <Setter Property="FontWeight" Value="Medium" />
             <Setter Property="Height" Value="50" />
             <Setter Property="Cursor" Value="Hand" />
             <Setter Property="Background" Value="Black" />
+            <Setter Property="Foreground" Value="Gold" />
         </Style>
 
         <Style TargetType="{x:Type Border}">
             <Setter Property="BorderThickness" Value="4" />
-            <Setter Property="BorderBrush" Value="#161616" />
+            <Setter Property="BorderBrush" Value="Gold" />
             <Setter Property="CornerRadius" Value="1" />
             <Setter Property="Margin" Value="3" />
         </Style>
     </Window.Resources>
 
-    <Grid Background="#2a2a2a">
+    <Grid Background="Black">
 
-        <DockPanel>
-            <Menu DockPanel.Dock="Top">
-                <MenuItem Header="_File">
-                    <MenuItem Header="_Import" Click="Import" />
-                    <MenuItem Header="_Export" Click="Export" />
+        <DockPanel Background="Black">
+            <Menu DockPanel.Dock="Top" Background="Black">
+                <MenuItem Header="_File" Background="Black" Foreground="Gold">
+                    <MenuItem Header="_Import" Background="Gold" Foreground="Black" Click="Import" />
+                    <MenuItem Header="_Export" Background="Gold" Foreground="Black" Click="Export" />
                     <Separator />
-                    <MenuItem Header="_Exit" Click="Exit" />
+                    <MenuItem Header="_Exit" Background="Gold" Foreground="Black" Click="Exit" />
                 </MenuItem>
             </Menu>
 
-            <StackPanel DockPanel.Dock="Right" Margin="10, 2, 10, 2" Width="Auto">
-                <TextBlock Text="List of Selections" FontSize="16" FontWeight="Bold" TextDecorations="Underline"  Foreground="Black" />
+            <StackPanel DockPanel.Dock="Right" Margin="10, 2, 10, 2" Background="Black" Width="Auto">
+                <TextBlock Text="List of Selections" FontSize="16" FontWeight="Bold" TextDecorations="Underline"  Foreground="Gold" />
                 <Border>
-                    <Button Content="Add"  Click="Add" />
+                    <Button Content="Add" Click="Add" />
                 </Border>
                 <Border>
-                    <Button Content="Edit"  Click="Edit" />
+                    <Button Content="Edit" Click="Edit" />
                 </Border>
+
                 <Border>
                     <Button Content="View" Click="View" />
                 </Border>

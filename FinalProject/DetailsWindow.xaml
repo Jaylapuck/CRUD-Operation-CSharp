@@ -7,25 +7,24 @@
         mc:Ignorable="d"
         Title="DetailsWindow" Height="315" Width="300">
     <Grid Background="Black">
-        <GroupBox Background="Black" Margin="10" Padding="10">
+        <GroupBox Background="black" BorderBrush="Gold" Foreground="Gold" FontWeight="DemiBold" Margin="10" Padding="10">
             <GroupBox.Header>
                 <StackPanel  Orientation="Horizontal">
-                    <Image Source="C:\Users\Jeremy\source\repos\FinalProject\Images\UserAdd.png" Width="20" Height="18" />
-                    <TextBlock FontWeight="Bold" Foreground="Gold">Contact Details
+                    <TextBlock FontWeight="Bold" Background="Black" Foreground="Gold">Contact Details
                     </TextBlock>
                 </StackPanel>
             </GroupBox.Header>
             <StackPanel>
-                <TextBlock FontWeight="Bold" Foreground="Gold">First name:</TextBlock>
-                <TextBox x:Name="FirstName"  />
-                <TextBlock FontWeight="Bold" Foreground="Gold">Last name:</TextBlock>
-                <TextBox x:Name="LastName" />
-                <TextBlock FontWeight="Bold" Foreground="Gold">Age:</TextBlock>
-                <TextBox x:Name="Age" />
-                <TextBlock FontWeight="Bold" Foreground="Gold">Email:</TextBlock>
-                <TextBox x:Name="Email" />
-                <TextBlock FontWeight="Bold" Foreground="Gold">Phone Number:</TextBlock>
-                <TextBox x:Name="PhoneNumber" />
+                <TextBlock >First name:</TextBlock>
+                <TextBox x:Name="FirstName"  Background="LightGoldenrodYellow"/>
+                <TextBlock >Last name:</TextBlock>
+                <TextBox x:Name="LastName" Background="LightGoldenrodYellow"/>
+                <TextBlock >Age:</TextBlock>
+                <TextBox x:Name="Age" Background="LightGoldenrodYellow"/>
+                <TextBlock >Email:</TextBlock>
+                <TextBox x:Name="Email" Background="LightGoldenrodYellow"/>
+                <TextBlock>Phone Number:</TextBlock>
+                <TextBox x:Name="PhoneNumber" Background="LightGoldenrodYellow"/>
                 
             </StackPanel>
         </GroupBox>

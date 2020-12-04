@@ -7,27 +7,26 @@
         mc:Ignorable="d"
         Title="AddWindow" Height="315" Width="300">
 
-    <Grid>
-        <GroupBox Background="White" Margin="10" Padding="10">
+    <Grid Background="Black">
+        <GroupBox Background="Black" Foreground="Gold" BorderBrush="Gold" Margin="10" Padding="10">
             <GroupBox.Header>
                 <StackPanel  Orientation="Horizontal">
-                    <Image Source="C:\Users\Jeremy\source\repos\FinalProject\Images\UserAdd.png" Width="20" Height="18" />
-                    <TextBlock FontWeight="Bold">Add a User
+                    <TextBlock FontWeight="Bold" Background="Black" Foreground="Gold">Add a User
                     </TextBlock>
                 </StackPanel>
             </GroupBox.Header>
             <StackPanel>
                 <TextBlock>First name:</TextBlock>
-                <TextBox x:Name="FirstName" />
+                <TextBox x:Name="FirstName" Background="LightGoldenrodYellow"/>
                 <TextBlock>Last name:</TextBlock>
-                <TextBox x:Name="LastName" />
+                <TextBox x:Name="LastName" Background="LightGoldenrodYellow"/>
                 <TextBlock>Age:</TextBlock>
-                <TextBox x:Name="Age" />
+                <TextBox x:Name="Age" Background="LightGoldenrodYellow"/>
                 <TextBlock>Email:</TextBlock>
-                <TextBox x:Name="Email" />
+                <TextBox x:Name="Email" Background="LightGoldenrodYellow" />
                 <TextBlock>Phone Number:</TextBlock>
-                <TextBox x:Name="PhoneNumber" />
-                <Button Margin="0,20" Content="Add User" FontSize="13" FontWeight="Bold" Click="AddContact" />
+                <TextBox x:Name="PhoneNumber" Background="LightGoldenrodYellow" />
+                <Button Margin="0,20" Content="Add User" Background="Black" BorderBrush="Gold" BorderThickness="3" Foreground="Gold" FontSize="13" FontWeight="DemiBold" Click="AddContact" />
             </StackPanel>
         </GroupBox>
     </Grid>
