@@ -114,18 +114,39 @@ namespace FinalProject
             if (openFileDialog.ShowDialog() == true)
                 contactFile = File.ReadAllLines(openFileDialog.FileName);
 
-            DBHandler.DeleteAllRecord();
+            MessageBoxResult result = MessageBox.Show("Do you want to the contacts in this file to replace you contact list?", "Warning", MessageBoxButton.YesNo);
 
-            foreach (string person in contactFile)
+            switch (result)
             {
-                char[] separators = { ',', ' ' };
+                case MessageBoxResult.Yes:
+                    DBHandler.DeleteAllRecord();
 
-                string[] fields = person.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                    foreach (string person in contactFile)
+                    {
+                        char[] separators = { ',', ' ' };
 
-                Int32.TryParse(fields[2].ToString(), out int age);
+                        string[] fields = person.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
-                DBHandler.InsertingRecord(fields[0], fields[1], age, fields[3], fields[4]);
+                        Int32.TryParse(fields[2].ToString(), out int age);
+
+                        DBHandler.InsertingRecord(fields[0], fields[1], age, fields[3], fields[4]);
+                    }
+                    break;
+                case MessageBoxResult.No:
+                    foreach (string person in contactFile)
+                    {
+                        char[] separators = { ',', ' ' };
+
+                        string[] fields = person.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+
+                        Int32.TryParse(fields[2].ToString(), out int age);
+
+                        DBHandler.InsertingRecord(fields[0], fields[1], age, fields[3], fields[4]);
+                    }
+                    break;
             }
+
+            
 
             lvDataBinding.ItemsSource = DBHandler.ReadAllPersons();
         }
@@ -151,7 +172,7 @@ namespace FinalProject
 
         private void Exit(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }
