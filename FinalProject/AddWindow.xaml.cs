@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,13 +25,29 @@ namespace FinalProject
         public AddWindow()
         {
             InitializeComponent();
+            PhoneNumber.Text = "***-***-****";
         }
 
         private void AddContact(object sender, RoutedEventArgs e)
         {
-            Int32.TryParse(Age.Text, out int AgeConverted);
-            DBHandler.InsertingRecord(FirstName.Text, LastName.Text, AgeConverted, Email.Text, PhoneNumber.Text);
-            this.Close();
+            //INPUT VALIDATION
+
+            if (FirstName.Text == "" || LastName.Text == "" || FirstName.Text == "" || Age.Text == "" || Email.Text == "" || PhoneNumber.Text == "")
+            {
+                MessageBox.Show("All or some fields are empty, FIELDS ARE EMPTY");
+            }
+            else
+            {
+                if (!Int32.TryParse(Age.Text, out int AgeConverted))
+                {
+                    MessageBox.Show("Age is not a valid number", "INVALID  AGE");
+                }
+                else
+                {
+                    DBHandler.InsertingRecord(FirstName.Text, LastName.Text, AgeConverted, Email.Text, PhoneNumber.Text);
+                    this.Close();
+                }
+            }
         }
     }
 }
