@@ -10,23 +10,20 @@ namespace FinalProject
 {
     public sealed class DBHandler
     {
-        //private constructor
         private DBHandler()
         { }
 
-        //private object instantiated with private contrsuctor
         private static readonly DBHandler instance = new DBHandler();
 
-        //public static property to get the object
         public static DBHandler Instance
         {
             get { return instance; }
         }
+
         private string ConnString = ConfigurationManager.ConnectionStrings["ContactConn"].ConnectionString;
 
         public List<Person> ReadAllPersons()
         {
-
             List<Person> personList = new List<Person>();
 
             using (SqlConnection conn = new SqlConnection(ConnString))
@@ -117,6 +114,7 @@ namespace FinalProject
                 transaction.Commit();
             }
         }
+
         public void DeleteAllRecord()
         {
             using (SqlConnection conn = new SqlConnection(ConnString))
