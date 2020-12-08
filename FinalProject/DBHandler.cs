@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace FinalProject
 {
-    internal class DBHandler
+    public sealed class DBHandler
     {
         //private constructor
         private DBHandler()
