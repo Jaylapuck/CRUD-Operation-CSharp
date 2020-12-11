@@ -45,7 +45,6 @@ namespace FinalProject
             if (lvDataBinding.SelectedItem != null)
             {
                 Person selectedPerson = (Person)lvDataBinding.SelectedItem;
-
                 UpdateWindow update = new UpdateWindow(selectedPerson.FirstName, selectedPerson.LastName, selectedPerson.Age, selectedPerson.Email, selectedPerson.PhoneNumber, selectedPerson.Id);
                 update.ShowDialog();
                 readAll();
@@ -71,21 +70,26 @@ namespace FinalProject
         {
             Person person = (Person)lvDataBinding.SelectedItem;
 
-            MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this contact?", "Warning", MessageBoxButton.YesNo);
-
-            switch (result)
+            if (lvDataBinding.SelectedItem != null)
             {
-                case MessageBoxResult.Yes:
-                    DBHandler.DeleteRecord(person.Id);
-                    MessageBox.Show("Contact has been deleted.");
-                    break;
-                case MessageBoxResult.No:
-                    MessageBox.Show("Contact has not been deleted.");
-                    break;
+                MessageBoxResult result = MessageBox.Show("Are you sure you want to delete this contact?", "Warning", MessageBoxButton.YesNo);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        DBHandler.DeleteRecord(person.Id);
+                        MessageBox.Show("Contact has been deleted.");
+                        break;
+
+                    case MessageBoxResult.No:
+                        MessageBox.Show("Contact has not been deleted.");
+                        break;
+                }
+                lvDataBinding.ItemsSource = DBHandler.ReadAllPersons();
             }
-
-
-            lvDataBinding.ItemsSource = DBHandler.ReadAllPersons();
+            else
+            {
+                MessageBox.Show("No rows selected.", "ERROR", MessageBoxButton.OK);
+            }
         }
 
         private void readAll()
@@ -108,45 +112,45 @@ namespace FinalProject
 
         private void Import(object sender, RoutedEventArgs e)
         {
-            string[] contactFile = {""};
+            string[] contactFile = { "" };
             OpenFileDialog openFileDialog = new OpenFileDialog();
             openFileDialog.Filter = "CSV Files (*.csv)|*.csv";
             if (openFileDialog.ShowDialog() == true)
+            {
                 contactFile = File.ReadAllLines(openFileDialog.FileName);
 
-            MessageBoxResult result = MessageBox.Show("Do you want the imported file data to replace the current data?", "Warning", MessageBoxButton.YesNo);
+                MessageBoxResult result = MessageBox.Show("Do you want the imported file data to replace the current data?", "Warning", MessageBoxButton.YesNo);
+                switch (result)
+                {
+                    case MessageBoxResult.Yes:
+                        DBHandler.DeleteAllRecord();
 
-            switch (result)
-            {
-                case MessageBoxResult.Yes:
-                    DBHandler.DeleteAllRecord();
+                        foreach (string person in contactFile)
+                        {
+                            char[] separators = { ',', ' ' };
 
-                    foreach (string person in contactFile)
-                    {
-                        char[] separators = { ',', ' ' };
+                            string[] fields = person.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
-                        string[] fields = person.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                            Int32.TryParse(fields[2].ToString(), out int age);
 
-                        Int32.TryParse(fields[2].ToString(), out int age);
+                            DBHandler.InsertingRecord(fields[0], fields[1], age, fields[3], fields[4]);
+                        }
+                        break;
 
-                        DBHandler.InsertingRecord(fields[0], fields[1], age, fields[3], fields[4]);
-                    }
-                    break;
-                case MessageBoxResult.No:
-                    foreach (string person in contactFile)
-                    {
-                        char[] separators = { ',', ' ' };
+                    case MessageBoxResult.No:
+                        foreach (string person in contactFile)
+                        {
+                            char[] separators = { ',', ' ' };
 
-                        string[] fields = person.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+                            string[] fields = person.Split(separators, StringSplitOptions.RemoveEmptyEntries);
 
-                        Int32.TryParse(fields[2].ToString(), out int age);
+                            Int32.TryParse(fields[2].ToString(), out int age);
 
-                        DBHandler.InsertingRecord(fields[0], fields[1], age, fields[3], fields[4]);
-                    }
-                    break;
+                            DBHandler.InsertingRecord(fields[0], fields[1], age, fields[3], fields[4]);
+                        }
+                        break;
+                }
             }
-
-            
 
             lvDataBinding.ItemsSource = DBHandler.ReadAllPersons();
         }
@@ -160,9 +164,9 @@ namespace FinalProject
                 List<Person> personList = DBHandler.ReadAllPersons();
 
                 string[] personArray = new string[personList.Count];
-                for(int i = 0; i <= personList.Count - 1; i++)
+                for (int i = 0; i <= personList.Count - 1; i++)
                 {
-                    string[] fields = {personList[i].FirstName, personList[i].LastName, personList[i].Age.ToString(), personList[i].Email, personList[i].PhoneNumber};
+                    string[] fields = { personList[i].FirstName, personList[i].LastName, personList[i].Age.ToString(), personList[i].Email, personList[i].PhoneNumber };
                     personArray[i] = string.Join(",", fields);
                 }
 
@@ -173,11 +177,6 @@ namespace FinalProject
         private void Exit(object sender, RoutedEventArgs e)
         {
             Application.Current.Shutdown();
-        }
-
-        private void GridViewColumn_SelectedDatesChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

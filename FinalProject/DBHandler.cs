@@ -57,7 +57,6 @@ namespace FinalProject
 
                         personList.Add(person);
                     }
-                    sqlDataReader.Close();
                 }
             }
 
@@ -68,20 +67,18 @@ namespace FinalProject
         {
             using (SqlConnection conn = new SqlConnection(ConnString))
             {
-                conn.Open();
-                SqlTransaction transaction = conn.BeginTransaction();
                 string query = "insert into Person (FirstName, LastName, Age, Email, Phone_Number) values(@FN,@LN,@A,@E,@PN)";
-                SqlCommand cmd = new SqlCommand(query, conn, transaction);
 
-                cmd.Parameters.AddWithValue("@FN", FirstName);
-                cmd.Parameters.AddWithValue("@LN", LastName);
-                cmd.Parameters.AddWithValue("@A", Age);
-                cmd.Parameters.AddWithValue("@E", Email);
-                cmd.Parameters.AddWithValue("@PN", Phone);
-
-                cmd.ExecuteNonQuery();
-                transaction.Commit();
-                conn.Close();
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@FN", FirstName);
+                    cmd.Parameters.AddWithValue("@LN", LastName);
+                    cmd.Parameters.AddWithValue("@A", Age);
+                    cmd.Parameters.AddWithValue("@E", Email);
+                    cmd.Parameters.AddWithValue("@PN", Phone);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 
@@ -89,18 +86,18 @@ namespace FinalProject
         {
             using (SqlConnection conn = new SqlConnection(ConnString))
             {
-                conn.Open();
-                SqlTransaction transaction = conn.BeginTransaction();
-                SqlCommand cmd = new SqlCommand("update Person set FirstName = @FN, LastName = @LN, Age = @A, Email = @E, Phone_Number = @PN where Id = @rID", conn, transaction);
-                cmd.Parameters.AddWithValue("@FN", FirstName);
-                cmd.Parameters.AddWithValue("@LN", LastName);
-                cmd.Parameters.AddWithValue("@A", Age);
-                cmd.Parameters.AddWithValue("@E", Email);
-                cmd.Parameters.AddWithValue("@PN", Phone);
-                cmd.Parameters.AddWithValue("@rID", ID);
-                cmd.ExecuteNonQuery();
-                transaction.Commit();
-                conn.Close();
+                string query = "update Person set FirstName = @FN, LastName = @LN, Age = @A, Email = @E, Phone_Number = @PN where Id = @rID";
+                using (var cmd = new SqlCommand(query, conn))
+                {
+                    conn.Open();
+                    cmd.Parameters.AddWithValue("@FN", FirstName);
+                    cmd.Parameters.AddWithValue("@LN", LastName);
+                    cmd.Parameters.AddWithValue("@A", Age);
+                    cmd.Parameters.AddWithValue("@E", Email);
+                    cmd.Parameters.AddWithValue("@PN", Phone);
+                    cmd.Parameters.AddWithValue("@rID", ID);
+                    cmd.ExecuteNonQuery();
+                }
             }
         }
 

@@ -51,7 +51,7 @@ namespace FinalProject
                 }
                 else
                 {
-                    DBHandler.InsertingRecord(FirstName.Text, LastName.Text, AgeConverted, Email.Text, PhoneNumber.Text);
+                    DBHandler.UpdateRecord(FirstName.Text, LastName.Text, AgeConverted, Email.Text, PhoneNumber.Text, id);
                     this.Close();
                 }
             }
