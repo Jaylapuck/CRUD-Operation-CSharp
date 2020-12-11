@@ -81,6 +81,7 @@ namespace FinalProject
 
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
+                conn.Close();
             }
         }
 
@@ -99,6 +100,7 @@ namespace FinalProject
                 cmd.Parameters.AddWithValue("@rID", ID);
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
+                conn.Close();
             }
         }
 
@@ -112,6 +114,7 @@ namespace FinalProject
                 cmd.Parameters.AddWithValue("@rID", id);
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
+                conn.Close();
             }
         }
 
@@ -124,6 +127,7 @@ namespace FinalProject
                 SqlCommand cmd = new SqlCommand("delete from Person", conn, transaction);
                 cmd.ExecuteNonQuery();
                 transaction.Commit();
+                conn.Close();
             }
         }
     }
